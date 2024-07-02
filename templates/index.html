@@ -1,0 +1,106 @@
+{%extends 'base.html'%}
+{%block content%}
+<section class="carousel" id="custom-carousel">
+    <div class="list">
+        <div class="item active">
+            <figure>
+                <img src="../static/images/3.png">
+            </figure>
+            <div class="content">
+                <p class="category">Sport Shoes</p>
+                <h2>NIKE VAPOR</h2>
+                <p class="description">
+                    Experience unmatched speed and agility with Nike Vapor. Engineered for runners seeking peak performance, these shoes combine advanced technology with lightweight materials to enhance your speed and comfort. Conquer your runs with Nike Vapor, where every step propels you forward with precision and power.                </p>
+                <div class="more">
+                    <button class="btn" id="checkbtn">NEW!</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="../static/images/2.png">
+            </figure>
+            <div class="content">
+                <p class="category">Sport Shoes</p>
+                <h2>NIKE ZEGAMA</h2>
+                <p class="description">
+                    Experience the pinnacle of running innovation with Nike Zegama. Designed for optimal comfort and agility, these shoes blend advanced technology with stylish design. Elevate your run with Nike Zegama and feel the difference in every stride.
+                </p>
+                <div class="more">
+                    <button class="btn">NEW!</button>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="../static/images/1.png">
+            </figure>
+            <div class="content">
+                <p class="category">Sport Shoes</p>
+                <h2>NIKE GT CUT</h2>
+                <p class="description">
+                    Step up your game with Nike GT Cut, the pinnacle of lightweight performance. Engineered for agility and speed, these shoes feature advanced design and responsive cushioning to elevate your running experience. Dominate any terrain with Nike GT Cut and enjoy a perfect blend of comfort and performance.        </p>
+                <div class="more">
+                    <button class="btn">NEW!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrows">
+        <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <div class="indicators">
+        <div class="number">02</div>
+        <ul>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</section>
+<h1 class="text-nike">UNLEASH YOU'R POTENTIAL WITH NIKE</h1>
+<section class="product">
+    <button class="pre-btn"><img src="../static/images/arrow.png" alt="Previous"></button>
+    <button class="nxt-btn"><img src="../static/images/arrow.png" alt="Next"></button>
+    <div class="product-container">
+        {% for product in products %}
+            {% if product.category.name == "Main-Page" %}
+            {% if current_user.is_authenticated and current_user.role == "admin" %}
+            <div class="admin-buttons">
+                <a href="/edit_product/{{ product.id }}"><button class="btn btn-edit" id="editbtn">Edit</button></a>
+                <a href="/delete_product/{{ product.id }}"><button class="btn btn-delete" id="deletebtn">Delete</button></a>
+            </div>
+        {% endif %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ product.image_url }}" alt="" class="product-thumb">
+                        <a href="/product/{{ product.id }}"><button class="card-btn">Buy Now</button></a>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">{{ product.name }}</h2>
+                        <p class="product-short-description">{{ product.text }}</p>
+                        <span class="price">{{ product.price }}</span>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+</head>
+{% include 'jumbotron.html'%}
+<h1 class="text-nike">Our New Gear </h1>
+<div class="card-container">
+    {% for card in cards %}
+    <div class="card">
+        <img src="{{ card.image_url }}" alt="">
+        <div class="card-content">
+            <h3>{{ card.header }}</h3>
+            <p>{{ card.textcard }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{%endblock%}

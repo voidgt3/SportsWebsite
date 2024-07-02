@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+{% block content %}
+<img src="../static/images/HeaderGif.gif" alt="" class="basket">
+<h1 class="niketext">Nike Basketball</h1>
+<p class="nikep">Become the dream</p>
+<br>
+<br>
+<h1 class="gotext">Gotta Hoop in one of these</h1>
+<section class="product">
+    <button class="pre-btn"><img src="../static/images/arrow.png" alt=""></button>
+    <button class="nxt-btn"><img src="../static/images/arrow.png" alt=""></button>
+    <div class="product-container">
+        {% for product in products %}
+            {% if product.category.name == "Basketball" %}
+            {% if current_user.is_authenticated and current_user.role == "admin" %}
+            <div class="admin-buttons">
+                <a href="/edit_product/{{ product.id }}"><button class="btn btn-edit" id="editbtn">Edit</button></a>
+                <a href="/delete_product/{{ product.id }}"><button class="btn btn-delete" id="deletebtn">Delete</button></a>
+            </div>
+        {% endif %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{ product.image_url}}" alt="" class="product-thumb">
+                        <a href="/product/{{ product.id }}"><button class="card-btn">Buy Now</button></a>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-brand">{{ product.name }}</h2>
+                        <p class="product-short-description">{{ product.text }}</p>
+                        <span class="price">{{ product.price }}</span>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{%endblock%}

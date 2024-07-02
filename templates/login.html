@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link rel="icon" href="    https://w0.peakpx.com/wallpaper/794/312/HD-wallpaper-nike-black-logo-white-thumbnail.jpg" type="image/x-icon">
+<title>Log In | Nike </title>
+<div class="wrapper">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <img src="../static/images/pngwing.com.png" alt="" class="nikelogo">
+
+        <h1>Login</h1>
+        
+        <div class="input-box">
+            {{ form.username(class="form-control", placeholder="Username") }}
+            <i class='bx bxs-user'></i>
+        </div>
+        
+        <div class="input-box">
+            {{ form.password(class="form-control", placeholder="Password") }}
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        
+        <button type="submit" class="regbtn">{{ form.submit.label.text }}</button>
+
+        <div class="register-link">
+            <p>Don't have an Account?<a href="/signup"> SignUp</a></p>
+            <br>
+            <p>Go back to Main page <a href="/"><i class='bx bxs-home'></i></a></p>
+        </div>
+    </form>
+</div>

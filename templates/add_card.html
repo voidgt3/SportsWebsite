@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+
+{%block content%}
+<br>
+<form class="mt-5" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    {{ form.header.label.text }}
+    {{ form.header(class="form-control mb-3 mt-2", placeholder=form.header.label.text) }}
+    {{ form.cardtext.label.text }}
+    {{ form.cardtext(class="form-control mb-3 mt-2", placeholder=form.cardtext.label.text) }}
+    {{ form.image_url.label.text }}
+    {{ form.image_url(class="form-control mb-3 mt-2", placeholder=form.image_url.label.text) }}
+    {{ form.image.label.text }}
+    {{ form.image() }}
+    {{ form.submit(class="btn btn-primary mb-3 mt-2") }}
+</form>
+
+{%endblock%}

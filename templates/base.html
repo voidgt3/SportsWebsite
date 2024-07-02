@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/imageslider.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" href="https://www.svgrepo.com/show/303214/nike-4-logo.svg" type="image/x-icon">
+    <title>Nike | Official Web-Site</title>
+</head>
+<body>
+
+    {% include 'navbar.html'%}
+    {%block content%}{%endblock%}
+    {% include 'footer.html'%}
+    <script type="text/javascript" src="{{ url_for('static', filename='script/script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script/navbar.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script/carousel.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script/menu.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='script/imageslider.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+from extensions import app
+from routes import home, product, login, signup, about, basketball, add_product, add_card, delete_card, edit_product, delete_product, delete_account, logout, success, football
